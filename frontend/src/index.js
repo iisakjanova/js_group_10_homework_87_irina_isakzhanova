@@ -14,13 +14,46 @@ import history from "./history";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const saveToLocalStorage = state => {
+    try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem('forumState', serializedState);
+    } catch (e) {
+        console.log('Could not save state');
+    }
+};
+
+const loadFromLocalStorage = () => {
+    try {
+        const serializedState = localStorage.getItem('forumState');
+
+        if (serializedState === null) {
+            return undefined;
+        }
+
+        return JSON.parse(serializedState);
+    } catch (e) {
+        return undefined;
+    }
+};
+
 const rootReducer = combineReducers({
     users: usersReducer,
 });
 
-const store = createStore(rootReducer, composeEnhancers(
-    applyMiddleware(thunk)
-));
+const persistedState = loadFromLocalStorage();
+
+const store = createStore(
+    rootReducer,
+    persistedState,
+    composeEnhancers(applyMiddleware(thunk))
+);
+
+store.subscribe(() => {
+    saveToLocalStorage({
+        users: store.getState().users,
+    });
+});
 
 const app = (
     <Router history={history}>
