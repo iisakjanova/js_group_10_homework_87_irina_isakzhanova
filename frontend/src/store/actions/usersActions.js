@@ -10,6 +10,8 @@ export const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
 
+export const LOGOUT_USER = 'LOGOUT_USER';
+
 export const CLEAN_UP_ERROR = 'CLEAN_UP_ERROR';
 
 export const registerUserRequest = () => ({type: REGISTER_USER_REQUEST});
@@ -65,5 +67,13 @@ export const loginUser = (userData, historyLocationState) => {
                 dispatch(loginUserFailure({global: 'No internet'}));
             }
         }
+    };
+};
+
+export const logoutUser = () => {
+    return async (dispatch) => {
+        await axiosApi.delete('/users/sessions');
+        dispatch({type: LOGOUT_USER});
+        dispatch(historyReplace('/'));
     };
 };

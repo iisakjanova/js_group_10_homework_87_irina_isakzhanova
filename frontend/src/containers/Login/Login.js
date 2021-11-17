@@ -70,7 +70,7 @@ const Login = ({history}) => {
                     <LockOpenOutlinedIcon/>
                 </Avatar>
                 <Typography component="h1" variant="h6">
-                    Sign in
+                    Login
                 </Typography>
                 {
                     error &&
@@ -116,7 +116,7 @@ const Login = ({history}) => {
                     </Grid>
                     <Grid item container justifyContent="flex-end">
                         <Link component={RouterLink} variant="body2" to="/register">
-                            Or sign up
+                            Or register
                         </Link>
                     </Grid>
                 </Grid>

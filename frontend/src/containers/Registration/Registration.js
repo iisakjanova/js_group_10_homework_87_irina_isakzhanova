@@ -78,7 +78,7 @@ const Registration = () => {
                     <LockOutlinedIcon/>
                 </Avatar>
                 <Typography component="h1" variant="h6">
-                    Sign up
+                    Register
                 </Typography>
                 {
                     error?.global &&
@@ -126,7 +126,7 @@ const Registration = () => {
                     </Grid>
                     <Grid item container justifyContent="flex-end">
                         <Link component={RouterLink} variant="body2" to="/login">
-                            Already have an account? Sign in
+                            Already have an account? Login
                         </Link>
                     </Grid>
                 </Grid>
