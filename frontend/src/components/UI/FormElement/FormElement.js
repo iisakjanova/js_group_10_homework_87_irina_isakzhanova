@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Grid, TextField} from "@material-ui/core";
 
-const FormElement = ({label, name, value, onChange, required, error, autoComplete, type}) => {
+const FormElement = ({label, name, value, onChange, required, error, autoComplete, type, multiline, rows}) => {
     return (
         <Grid item xs={12}>
             <TextField
@@ -11,6 +11,8 @@ const FormElement = ({label, name, value, onChange, required, error, autoComplet
                 type={type}
                 required={required}
                 autoComplete={autoComplete}
+                multiline={multiline}
+                rows={rows}
                 label={label}
                 name={name}
                 value={value}

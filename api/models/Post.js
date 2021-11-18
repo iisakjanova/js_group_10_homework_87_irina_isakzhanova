@@ -11,8 +11,18 @@ const PostSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
-    description: String,
-    image: String,
+    description: {
+        type: String,
+        required: function () {
+            return !this.image
+        },
+    },
+    image: {
+        type: String,
+        required: function () {
+            return !this.description
+        },
+    },
     datetime: Date,
 });
 

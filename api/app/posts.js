@@ -20,10 +20,6 @@ const upload = multer({storage});
 const router = express.Router();
 
 router.post('/', [auth, upload.single('image')], async (req, res) => {
-    if (!req.body.description && !req.file) {
-        return res.status(400).send({message: 'Data is not valid'});
-    }
-
     const postData = {
         title: req.body.title,
         user: req.user._id,
