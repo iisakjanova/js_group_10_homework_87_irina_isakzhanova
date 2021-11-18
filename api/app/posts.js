@@ -41,4 +41,14 @@ router.post('/', [auth, upload.single('image')], async (req, res) => {
     }
 });
 
+router.get('/', async (req, res) => {
+    try {
+        const posts = await Post.aggregate().sort({datetime: -1});
+        await Post.populate(posts, {path: "user", select: "username"});
+        res.send(posts);
+    } catch (e) {
+        res.status(500).send({message: e.message});
+    }
+});
+
 module.exports = router;
