@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Grid, makeStyles} from "@material-ui/core";
+import {Button, Grid, makeStyles, Typography} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
@@ -15,12 +15,15 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const UserMenu = () => {
+const UserMenu = ({user}) => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
     return (
-        <Grid container alignItems="center">
+        <Grid container spacing={2} alignItems="center">
+            <Grid item>
+                <Typography variant="subtitle1">Hello, <b>{user}</b>!</Typography>
+            </Grid>
             <Grid item>
                 <Button
                     component={Link}

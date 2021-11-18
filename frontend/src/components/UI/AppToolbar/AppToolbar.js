@@ -40,7 +40,7 @@ const AppToolbar = () => {
                             </Typography>
                         </Grid>
                         <Grid item>
-                            {user ? <UserMenu /> : <AnonymousMenu />}
+                            {user ? <UserMenu user={user.username} /> : <AnonymousMenu />}
                         </Grid>
                     </Grid>
                 </Toolbar>
