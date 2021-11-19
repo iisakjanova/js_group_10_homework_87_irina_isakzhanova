@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Grid, makeStyles, Paper, Typography} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import ButtonWithProgress from "../../components/UI/ButtonWithProgress/ButtonWithProgress";
+import {Alert} from "@material-ui/lab";
 
+import ButtonWithProgress from "../../components/UI/ButtonWithProgress/ButtonWithProgress";
 import FileInput from "../../components/UI/FileInput/FileInput";
 import {addPost, cleanUpPostError} from "../../store/actions/postsActions";
 import FormElement from "../../components/UI/FormElement/FormElement";
-import {Alert} from "@material-ui/lab";
-
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -65,12 +64,7 @@ const AddPost = () => {
 
     const getFieldError = fieldName => {
         try {
-            if (fieldName) {
-                return error.errors[fieldName].message;
-            } else {
-                return error
-            }
-
+            return error.errors[fieldName].message;
         } catch (e) {
             return undefined;
         }

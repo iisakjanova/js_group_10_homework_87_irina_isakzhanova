@@ -15,7 +15,7 @@ export const GET_POST_BY_ID_REQUEST = 'GET_POST_BY_ID_REQUEST';
 export const GET_POST_BY_ID_SUCCESS = 'GET_POST_BY_ID_SUCCESS';
 export const GET_POST_BY_ID_FAILURE = 'GET_POST_BY_ID_FAILURE';
 
-export const CLEAN_UP_POST_ERROR = 'CLEAN_UP_ERROR';
+export const CLEAN_UP_POST_ERROR = 'CLEAN_UP_POST_ERROR';
 
 export const addPostRequest = () => ({type: ADD_POST_REQUEST});
 export const addPostSuccess = () => ({type: ADD_POST_SUCCESS});

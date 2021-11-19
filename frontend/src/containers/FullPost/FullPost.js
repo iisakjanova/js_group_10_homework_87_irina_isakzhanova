@@ -6,6 +6,7 @@ import ForumIcon from "@material-ui/icons/Forum";
 import {getPostById} from "../../store/actions/postsActions";
 import {apiURL} from "../../config";
 import Preloader from "../../components/UI/Preloader/Preloader";
+import AddComment from "../../components/AddComment/AddComment";
 
 const useStyles = makeStyles(theme => ({
     imageWrapper: {
@@ -30,6 +31,8 @@ const FullPost = ({match}) => {
 
     const post = useSelector(state => state.posts.post);
     const loading = useSelector(state => state.posts.singleLoading);
+    const addCommentLoading = useSelector(state => state.comments.addLoading);
+    const addCommentError = useSelector(state => state.comments.addError);
 
     let message = null;
 
@@ -80,6 +83,11 @@ const FullPost = ({match}) => {
                     <Grid item>
                         <Typography variant="body1">{post.description}</Typography>
                     </Grid>
+                    <AddComment
+                        error={addCommentError}
+                        loading={addCommentLoading}
+                        postId={post._id}
+                    />
                 </Grid>
             )}
         </>
