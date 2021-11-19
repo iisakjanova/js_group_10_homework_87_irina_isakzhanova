@@ -51,4 +51,19 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id)
+            .populate({path: "user", select: "username"});
+
+        if (post) {
+            res.send(post);
+        } else {
+            res.status(404).send({message: 'Post is not found'});
+        }
+    } catch (e) {
+        res.status(500).send({message: e.message});
+    }
+});
+
 module.exports = router;
