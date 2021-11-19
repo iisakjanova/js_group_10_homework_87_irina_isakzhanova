@@ -22,4 +22,14 @@ router.post('/', auth, async (req, res) => {
     }
 });
 
+router.get('/', async (req, res) => {
+    try {
+        const comments = await Comment.aggregate().sort({_id: -1});
+        await Comment.populate(comments, {path: "user", select: "username"});
+        res.send(comments);
+    } catch (e) {
+        res.status(500).send({message: e.message});
+    }
+});
+
 module.exports = router;
