@@ -2,7 +2,10 @@ import {
     ADD_COMMENT_FAILURE,
     ADD_COMMENT_REQUEST,
     ADD_COMMENT_SUCCESS,
-    CLEAN_UP_COMMENT_ERROR
+    CLEAN_UP_COMMENT_ERROR,
+    GET_COMMENTS_FAILURE,
+    GET_COMMENTS_REQUEST,
+    GET_COMMENTS_SUCCESS
 } from "../actions/commentsActions";
 
 const initialState = {
@@ -28,6 +31,12 @@ const commentsReducer = (state = initialState, action) => {
             return {...state, addLoading: false, addError: action.payload};
         case CLEAN_UP_COMMENT_ERROR:
             return {...state, addError: null};
+        case GET_COMMENTS_REQUEST:
+            return {...state, fetchLoading: true};
+        case GET_COMMENTS_SUCCESS:
+            return {...state, fetchLoading: false, comments: action.payload, fetchError: null};
+        case GET_COMMENTS_FAILURE:
+            return {...state, fetchLoading: false, fetchError: action.payload};
         default:
             return state;
     }

@@ -25,7 +25,7 @@ const Posts = ({history}) => {
         <>
             <Preloader loading={loading} />
             <Grid container direction="column" spacing={2}>
-                {posts.length > 0
+                {posts?.length > 0
                     ?
                     posts.map(post => (
                         <Post

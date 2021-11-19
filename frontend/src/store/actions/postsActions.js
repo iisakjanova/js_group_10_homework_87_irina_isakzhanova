@@ -61,7 +61,7 @@ export const getPosts = () => {
             dispatch(getPostsSuccess(response.data));
         } catch (error) {
             dispatch(getPostsFailure(error.message));
-            toast.error('Could not fetch post!', {
+            toast.error('Could not fetch posts!', {
                 theme: 'colored',
             });
         }
