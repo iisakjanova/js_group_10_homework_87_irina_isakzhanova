@@ -14,8 +14,8 @@ const App = () => {
           <Switch>
               <Route path="/" exact component={Posts} />
               <Route path="/posts" exact component={Posts} />
+              <Route path="/posts/add" exact component={AddPost} />
               <Route path="/posts/:id" component={FullPost} />
-              <Route path="/posts/add" component={AddPost} />
               <Route path="/register" component={Registration} />
               <Route path="/login" component={Login} />
               <Route render={() => <Typography variant="h4">Not found</Typography>} />

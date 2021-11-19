@@ -7,6 +7,7 @@ import ButtonWithProgress from "../../components/UI/ButtonWithProgress/ButtonWit
 import FileInput from "../../components/UI/FileInput/FileInput";
 import {addPost, cleanUpPostError} from "../../store/actions/postsActions";
 import FormElement from "../../components/UI/FormElement/FormElement";
+import {Redirect} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -28,17 +29,27 @@ const initialState = {
     image: null,
 };
 
-const AddPost = () => {
+const AddPost = ({history}) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const error = useSelector(state => state.posts.addError);
     const loading = useSelector(state => state.posts.addLoading);
+    const user = useSelector(state => state.users.user);
 
     const [post, setPost] = useState(initialState);
 
     useEffect(() => {
         dispatch(cleanUpPostError());
     }, [dispatch]);
+
+    if (!user) {
+        const path = history.location.pathname + history.location.search;
+
+        return <Redirect to={{
+            pathname: "/login",
+            state: {nextpath: path}
+        }} />
+    }
 
     const handleInputChange = e => {
         const {name, value} = e.target;
