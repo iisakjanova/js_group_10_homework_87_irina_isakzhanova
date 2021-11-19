@@ -32,7 +32,9 @@ FormElement.propTypes = {
     required: PropTypes.bool,
     error: PropTypes.string,
     autoComplete: PropTypes.string,
-    type: PropTypes.string
+    type: PropTypes.string,
+    multiline: PropTypes.bool,
+    rows: PropTypes.number
 };
 
 export default FormElement;

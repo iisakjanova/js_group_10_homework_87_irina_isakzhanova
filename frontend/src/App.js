@@ -6,6 +6,7 @@ import Login from "./containers/Login/Login";
 import Layout from "./components/UI/Layout/Layout";
 import AddPost from "./containers/AddPost/AddPost";
 import Posts from "./containers/Posts/Posts";
+import FullPost from "./containers/FullPost/FullPost";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <Switch>
               <Route path="/" exact component={Posts} />
               <Route path="/posts" exact component={Posts} />
+              <Route path="/posts/:id" component={FullPost} />
               <Route path="/posts/add" component={AddPost} />
               <Route path="/register" component={Registration} />
               <Route path="/login" component={Login} />
