@@ -5,6 +5,7 @@ const exitHook = require('async-exit-hook');
 
 const users = require('./app/users');
 const posts = require('./app/posts');
+const comments = require('./app/comments');
 const config = require('./config');
 
 const app = express();
@@ -16,6 +17,7 @@ const port = 8000;
 
 app.use('/users', users);
 app.use('/posts', posts);
+app.use('/comments', comments);
 
 const run = async () => {
     await mongoose.connect(config.db.url);
